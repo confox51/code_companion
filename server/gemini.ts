@@ -1,10 +1,10 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // The Gemini Pro model is designed for complex reasoning
-const MODEL_NAME = 'gemini-pro';
+const MODEL_NAME = "gemini-2.0-flash";
 
 // Initialize the Gemini API client
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function analyzeCode(code: string, language: string) {
   const prompt = `
@@ -63,13 +63,13 @@ The response must be valid JSON with no markdown formatting, code blocks, or add
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
-    
+
     // Try to parse the JSON from the response
     try {
       return JSON.parse(text);
     } catch (parseError) {
       console.error("Failed to parse JSON from Gemini's response:", parseError);
-      
+
       // Attempt to extract JSON if it's wrapped in code blocks or other text
       const jsonMatch = text.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
