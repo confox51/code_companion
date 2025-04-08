@@ -1,7 +1,7 @@
 import type { Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { analyzeCode } from "./anthropic";
+import { analyzeCode } from "./gemini";
 import { codeReviewRequestSchema } from "@shared/schema";
 import { ZodError } from "zod";
 
@@ -13,7 +13,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = codeReviewRequestSchema.parse(req.body);
       const { code, language } = validatedData;
 
-      // Call Anthropic API to analyze the code
+      // Call Gemini API to analyze the code
       const analysis = await analyzeCode(code, language);
 
       // Save the code review to storage
