@@ -53,3 +53,14 @@ The application will be available at `http://0.0.0.0:5000`
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Built with Replit
+
+This project is built and hosted on [Replit](https://replit.com), taking advantage of:
+- Zero-configuration development environment
+- Integrated deployment with autoscaling
+- Real-time collaboration features
+- Built-in package management
+- Automatic HTTPS and custom domain support
+
+You can run this project directly in your browser by visiting our Repl!
